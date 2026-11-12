@@ -38,14 +38,22 @@ jobs:
             "$SDKMANAGER" "platform-tools" "build-tools;36.0.0" "platforms;android-36.1"
           fi
 
-      - name: Prepare keystore and env file
+      - name: Prepare debug keystore and env file
         run: |
           if [ ! -f .env ]; then
             touch .env
           fi
-          if [ -f debug.keystore.base64 ]; then
-            base64 -d debug.keystore.base64 > debug.keystore
+          if [ ! -f debug.keystore ]; then
+            if [ -f debug.keystore.base64 ]; then
+              base64 -d debug.keystore.base64 > debug.keystore
+            else
+              keytool -genkeypair -noprompt -keystore debug.keystore \
+                -storepass android -alias androiddebugkey -keypass android \
+                -keyalg RSA -keysize 2048 -validity 10000 \
+                -dname "CN=Android Debug,O=Android,C=US"
+            fi
           fi
+          ls -lh debug.keystore .env
 
       - name: Setup Gradle 9.3.1
         uses: gradle/actions/setup-gradle@v4
