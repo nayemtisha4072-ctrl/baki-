@@ -1,0 +1,6 @@
+{
+  "name": "বাকি খাতা",
+  "description": "ডিজিটাল বাকি খাতা ও কাস্টমার লেজার হিসাব খাতা - BAKI KHATA: Digital Credit Ledger & Due Manager for Bangladesh",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

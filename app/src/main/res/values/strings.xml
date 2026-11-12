@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">বাকি খাতা</string>
+    <string name="app_name_en">BAKI KHATA</string>
+    <string name="tagline">ডিজিটাল বাকি ও ক্যাশ খাতা</string>
+    <string name="currency_symbol">৳</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">হোম</string>
+    <string name="nav_customers">গ্রাহক</string>
+    <string name="nav_add_due">বাকি যোগ</string>
+    <string name="nav_transactions">লেনদেন</string>
+    <string name="nav_reports">রিপোর্ট</string>
+    <string name="nav_settings">সেটিংস</string>
+    <string name="nav_my_shop">আমার দোকান</string>
+    <string name="nav_notifications">নোটিফিকেশন</string>
+    <string name="nav_profile">প্রোফাইল</string>
+
+    <!-- Roles -->
+    <string name="role_shopkeeper">দোকানদার</string>
+    <string name="role_customer">গ্রাহক</string>
+
+    <!-- Financial Stats -->
+    <string name="total_due">মোট বাকি</string>
+    <string name="today_due">আজকের বাকি</string>
+    <string name="today_collection">আজকের জমা</string>
+    <string name="total_customers">মোট গ্রাহক</string>
+    <string name="monthly_sales">এই মাসের বিক্রি</string>
+    <string name="monthly_collection">এই মাসের আদায়</string>
+
+    <!-- Actions -->
+    <string name="add_new_customer">নতুন গ্রাহক যোগ করুন</string>
+    <string name="receive_payment">টাকা জমা নিন</string>
+    <string name="add_credit">বাকি যোগ করুন</string>
+    <string name="save">সংরক্ষণ করুন</string>
+    <string name="cancel">বাতিল</string>
+    <string name="search_hint">নাম অথবা মোবাইল নম্বর খুঁজুন...</string>
+    <string name="download_pdf">পিডিএফ রিপোর্ট ডাউনলোড</string>
+    <string name="share_statement">স্টেটমেন্ট শেয়ার করুন</string>
+    <string name="send_sms">এসএমএস তাগাদা পাঠান</string>
+
+    <!-- Compliance & AdMob -->
+    <string name="privacy_policy">গোপনীয়তা নীতি (Privacy Policy)</string>
+    <string name="terms_conditions">শর্তাবলী (Terms &amp; Conditions)</string>
+    <string name="account_deletion">অ্যাকাউন্ট ও তথ্য মোছার অনুরোধ</string>
+    <string name="admob_configuration">গুগল অ্যাডমব কনফিগারেশন</string>
+</resources>
