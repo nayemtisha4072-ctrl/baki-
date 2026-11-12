@@ -19,13 +19,24 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Accept Android SDK Licenses and Install SDK 36.1
+      - name: Configure Android SDK 36.1 and Licenses
         run: |
-          yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          sdkmanager "platform-tools" "build-tools;36.0.0" "platforms;android-36.1"
+          SDK_DIR="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          if [ ! -w "$SDK_DIR" ]; then
+            sudo chown -R "$(id -u):$(id -g)" "$SDK_DIR"
+          fi
+          mkdir -p "$SDK_DIR/licenses"
+          grep -qxF "24333f8a63b6825ea9c5514f83c2829b004d1fee" "$SDK_DIR/licenses/android-sdk-license" 2>/dev/null || echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$SDK_DIR/licenses/android-sdk-license"
+          grep -qxF "84831b9409646a918e30573bab4c9c91346d8abd" "$SDK_DIR/licenses/android-sdk-preview-license" 2>/dev/null || echo "84831b9409646a918e30573bab4c9c91346d8abd" >> "$SDK_DIR/licenses/android-sdk-preview-license"
+          grep -qxF "33b6a2b64607f11b759f320ef9dff4ae5c47d97a" "$SDK_DIR/licenses/google-gdk-license" 2>/dev/null || echo "33b6a2b64607f11b759f320ef9dff4ae5c47d97a" >> "$SDK_DIR/licenses/google-gdk-license"
+
+          SDKMANAGER="$SDK_DIR/cmdline-tools/latest/bin/sdkmanager"
+          if [ -x "$SDKMANAGER" ]; then
+            set +o pipefail
+            yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
+            set -o pipefail
+            "$SDKMANAGER" "platform-tools" "build-tools;36.0.0" "platforms;android-36.1"
+          fi
 
       - name: Prepare keystore and env file
         run: |
